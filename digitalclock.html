@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title>display time</title>
+	<style type="text/css">
+		.display{
+			width:10%;
+			height: 5%;
+			border-style: groove;
+			margin-top: 25%;
+			margin-left: 40%;
+			padding-top: 5px;
+			text-align: center;
+		}
+		div:hover{
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div id="clock" class="display"></div>
+	<script type="text/javascript">
+		//hours,minutes,seconds,am/pm should be displayed inside div
+		
+		function startTime(){
+		var divBox=document.getElementById('clock');
+		var today=new Date();
+		var h=today.getHours();
+		var m=today.getMinutes();
+		var s=today.getSeconds();
+		var ap="AM";
+			//to check hours for am/pm
+			if(h>11){
+				ap="PM";
+			}
+			if(h == 0){
+				h=12;
+			}
+			if(h>12){
+				h=h-12;
+			}
+			m=checkTime(m);
+			s=checkTime(s);
+
+
+			divBox.innerHTML=h+":"+m+":"+s+ap;
+			t=setTimeout('startTime()',1000)
+		}
+		//to add zero infront if number less than 10
+		function checkTime(i){
+			if(i<10){
+				i="0"+i;
+			}
+				return i;
+			
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		window.onload=startTime;
+	</script>
+
+</body>
+</html>
